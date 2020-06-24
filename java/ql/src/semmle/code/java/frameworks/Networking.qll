@@ -19,6 +19,11 @@ class TypeUrl extends RefType {
   TypeUrl() { hasQualifiedName("java.net", "URL") }
 }
 
+/** The type `java.net.URLStreamHandler`. */
+class TypeURLStreamHandler extends RefType {
+  TypeURLStreamHandler() { hasQualifiedName("java.net", "URLStreamHandler") }
+}
+
 /** The method `java.net.URLConnection::getInputStream`. */
 class URLConnectionGetInputStreamMethod extends Method {
   URLConnectionGetInputStreamMethod() {
