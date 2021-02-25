@@ -14,5 +14,12 @@ do
       exitVal=1
     fi
   fi
+  if [[ -f "$p" ]] && { [ "$extension" == "qhelp" ]; }
+  then
+    if ! codeql generate query-help -vvv --log-to-stderr --format markdown -- "$p"
+    then
+      exitVal=1
+    fi
+  fi
 done <<<"$(git diff --cached --relative --name-only)"
 exit $exitVal
