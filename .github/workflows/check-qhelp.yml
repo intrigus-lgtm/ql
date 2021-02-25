@@ -1,0 +1,18 @@
+on:
+  pull_request_target:
+    paths:
+      - "*/ql/src/**/*.qhelp"
+
+jobs:
+  check-qhelp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+      - name: Fail if qhelp conversion to markdown has errors.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api 'repos/${{github.repository}}/pulls/${{github.event.number}}/files' --paginate |
+          jq 'any(.[].filename ; test("/change-notes/.*[.]md$"))' --exit-status
