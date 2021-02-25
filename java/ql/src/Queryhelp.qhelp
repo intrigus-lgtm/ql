@@ -5,7 +5,7 @@
 
 
 <overview>
-ddddddJava enables you to annotate methods that are intended to override a method in a superclass. 
+ddddddddJava enables you to annotate methods that are intended to override a method in a superclass. 
 Compilers are required to generate an error if such an annotated method does not override a method
 in a superclass, which provides increased protection from potential defects. An annotated method also
 improves code readability.
