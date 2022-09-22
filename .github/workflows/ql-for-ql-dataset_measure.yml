@@ -25,7 +25,7 @@ jobs:
 
       - name: Find codeql
         id: find-codeql
-        uses: github/codeql-action/init@aa93aea877e5fb8841bcb1193f672abf6e9f2980
+        uses: github/codeql-action/init@a643eb36210fc53782dd4628106e0608631f9fb4
         with:
           languages: javascript # does not matter
       - uses: actions/cache@v3
