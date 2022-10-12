@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Find codeql
         id: find-codeql
-        uses: github/codeql-action/init@aa93aea877e5fb8841bcb1193f672abf6e9f2980
+        uses: github/codeql-action/init@e862e8fc76550f11214954449bbac92769860ad7
         with:
           languages: javascript # does not matter
       - uses: actions/cache@v3
