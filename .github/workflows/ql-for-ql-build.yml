@@ -44,7 +44,7 @@ jobs:
           CODEQL: ${{ steps.find-codeql.outputs.codeql-path }}
           PACKZIP: ${{ runner.temp }}/query-pack.zip
       - name: Upload query pack
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: query-pack-zip
           path: ${{ runner.temp }}/query-pack.zip
@@ -84,7 +84,7 @@ jobs:
       - name: Generate dbscheme
         if: steps.cache-extractor.outputs.cache-hit != 'true'
         run: ql/target/release/ql-generator --dbscheme ql/ql/src/ql.dbscheme --library ql/ql/src/codeql_ql/ast/internal/TreeSitter.qll
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: extractor-ubuntu-latest
           path: |
@@ -117,7 +117,7 @@ jobs:
           fi
           cd pack
           zip -rq ../codeql-ql.zip .
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: codeql-ql-pack
           path: codeql-ql.zip
@@ -172,7 +172,7 @@ jobs:
         run: |
           sed -i 's/\$schema.*/\$schema": "https:\/\/raw.githubusercontent.com\/oasis-tcs\/sarif-spec\/master\/Schemata\/sarif-schema-2.1.0",/' ql-for-ql.sarif 
       - name: Sarif as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ql-for-ql.sarif
           path: ql-for-ql.sarif
@@ -181,7 +181,7 @@ jobs:
           mkdir split-sarif
           node ./ql/scripts/split-sarif.js ql-for-ql.sarif split-sarif
       - name: Upload langs as artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ql-for-ql-langs
           path: split-sarif
